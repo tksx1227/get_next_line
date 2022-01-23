@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/22 21:57:29 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/23 17:35:27 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,25 @@ size_t	ft_strlen(char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_strndupl(char const *s, size_t size)
+{
+	size_t	i;
+	char	*p;
+
+	if (SIZE_MAX - 2 < size)
+		return (NULL);
+	p = (char *)malloc(sizeof(char) * (size + 2));
+	if (p == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		p[i] = s[i];
+		i++;
+	}
+	p[size] = '\n';
+	p[size + 1] = '\0';
+	return (p);
 }
