@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/23 17:35:27 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/24 00:23:12 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
+	i = 0;
 	while (s[i] != '\0')
 		i++;
 	return (i);
