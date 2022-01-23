@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/22 21:38:08 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/23 17:42:26 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
