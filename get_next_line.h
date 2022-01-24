@@ -20,6 +20,10 @@
 # include <fcntl.h>
 # include <stdint.h>
 
+# define SUCCESS 1
+# define FINISH 0
+# define ERROR -1
+
 typedef struct s_list
 {
 	int				fd;
