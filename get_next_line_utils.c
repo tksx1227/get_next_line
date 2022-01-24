@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/24 00:23:12 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 00:02:14 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -22,23 +22,24 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strndupl(char const *s, size_t size)
+char	*ft_strndup(const char *s, size_t size)
 {
 	size_t	i;
+	size_t	len;
 	char	*p;
 
-	if (SIZE_MAX - 2 < size)
-		return (NULL);
-	p = (char *)malloc(sizeof(char) * (size + 2));
+	len = ft_strlen(s);
+	if (len < size)
+		size = len;
+	p = (char *)malloc(sizeof(char) * (size + 1));
 	if (p == NULL)
 		return (NULL);
 	i = 0;
-	while (i < size)
+	while (s[i] != '\0' && i < size)
 	{
 		p[i] = s[i];
 		i++;
 	}
-	p[size] = '\n';
-	p[size + 1] = '\0';
+	p[i] = '\0';
 	return (p);
 }
