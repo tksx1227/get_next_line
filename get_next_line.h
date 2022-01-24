@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/23 17:42:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/24 21:59:22 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct s_list
 }	t_list;
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
 
 #endif
