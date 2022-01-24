@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 00:02:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 00:07:07 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strndup(const char *s, size_t size)
 	if (p == NULL)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && i < size)
+	while (i < size)
 	{
 		p[i] = s[i];
 		i++;
