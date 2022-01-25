@@ -63,29 +63,28 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*newstr;
+	char	*p;
+	char	*head;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL)
+		return (ft_strndup(s2, ft_strlen(s2)));
+	if (SIZE_MAX - ft_strlen(s1) <= ft_strlen(s2))
 	{
 		free(s1);
 		return (NULL);
 	}
-	newstr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	i = 0;
-	while (s1[i] != '\0')
+	p = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (p == NULL)
 	{
-		newstr[i] = s1[i];
-		i++;
+		free(s1);
+		return (NULL);
 	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		newstr[i + j] = s2[j];
-		j++;
-	}
-	newstr[i + j] = '\0';
+	head = p;
+	while (*s1 != '\0')
+		*p++ = *s1++;
+	while (*s2 != '\0')
+		*p++ = *s2++;
+	*p = '\0';
 	free(s1);
-	return (newstr);
+	return (head);
 }
