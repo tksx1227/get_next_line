@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 21:52:51 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 22:33:03 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,22 @@ static int	gnl_read(t_node	*node)
 		return (FAIL);
 	while (1)
 	{
+		if (ft_strchr(node->storage, '\n') != NULL)
+			return (SUCCESS);
 		buf = (char *)malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 		rc = read(node->fd, buf, BUFFER_SIZE);
 		if (rc == -1 || rc == 0)
 		{
 			free(buf);
 			if (rc == 0)
-				return (SUCCESS);
-			else
-				return (FAIL);
+				return (FINISH);
+			return (FAIL);
 		}
 		buf[rc] = '\0';
 		node->storage = ft_strjoin(node->storage, buf);
 		free(buf);
-		if (ft_strchr(node->storage, '\n') != NULL)
-			return (SUCCESS);
+		if (node->storage == NULL)
+			return (FAIL);
 	}
 }
 
