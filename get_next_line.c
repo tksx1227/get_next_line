@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 00:19:00 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 00:33:07 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,33 @@ static	char	*gnl_reformat_line(t_node *node, int status)
 	free(temp);
 	if (node->storage == NULL)
 		return (NULL);
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	char			*line;
+	t_node			*node;
+	static int		status;
+	static t_node	*root;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || SSIZE_MAX < BUFFER_SIZE)
+		return (NULL);
+	if (root == NULL)
+	{
+		root = gnl_new_node(fd);
+		if (root == NULL)
+			return (NULL);
+	}
+	node = gnl_get_node(fd, &root);
+	status = gnl_read(node);
+	if (status == FAIL)
+	{
+		gnl_free_all(&root);
+		return (NULL);
+	}
+	line = gnl_reformat_line(node, status);
+	if (line == NULL)
+		gnl_free_all(&root);
 	return (line);
 }
