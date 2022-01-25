@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 10:12:35 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 10:16:50 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@
 # define SUCCESS 1
 # define FAIL 0
 
-typedef struct s_list
+typedef struct s_node
 {
 	int				fd;
-	char			*line;
-	char			*temp;
+	char			*storage;
 	struct s_list	*next;
-}	t_list;
+}	t_node;
 
 char	*get_next_line(int fd);
 char	*ft_strndup(const char *s, size_t size);
