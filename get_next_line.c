@@ -59,3 +59,29 @@ static t_node	*gnl_new_node(int fd)
 	node->next = NULL;
 	return (node);
 }
+
+static t_node	*gnl_get_node(int fd, t_node **root)
+{
+	t_node	*node;
+	t_node	*prev;
+
+	if (root == NULL)
+		return (NULL);
+	if (*root == NULL)
+	{
+		node = gnl_new_node(fd);
+		*root = node;
+		return (node);
+	}
+	node = *root;
+	while (node != NULL)
+	{
+		if (node->fd == fd)
+			return (node);
+		prev = node;
+		node = node->next;
+	}
+	node = gnl_new_node(fd);
+	prev->next = node;
+	return (node);
+}
