@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 10:34:27 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 21:42:54 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdint.h>
 
 # define SUCCESS 1
-# define FAIL 0
+# define FINISH 0
+# define FAIL -1
 
 typedef struct s_node
 {
