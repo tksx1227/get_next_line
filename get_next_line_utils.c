@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 00:07:07 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 10:51:17 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,28 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
-	size_t	len1;
-	size_t	len2;
-	char	*p;
+	size_t	j;
+	char	*newstr;
 
 	if (s1 == NULL || s2 == NULL)
+	{
+		free(s1);
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	p = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	}
+	newstr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = 0;
-	while (i < len1)
+	while (s1[i] != '\0')
 	{
-		p[i] = s1[i];
+		newstr[i] = s1[i];
 		i++;
 	}
-	i = 0;
-	while (i < len2)
+	j = 0;
+	while (s2[j] != '\0')
 	{
-		p[len1 + i] = s2[i];
-		i++;
+		newstr[i + j] = s2[j];
+		j++;
 	}
-	p[len1 + len2] = '\0';
+	newstr[i + j] = '\0';
 	free(s1);
-	return (p);
+	return (newstr);
 }
