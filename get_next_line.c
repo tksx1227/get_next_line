@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 22:33:03 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 00:19:00 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,30 @@ static t_node	*gnl_get_node(int fd, t_node **root)
 	node = gnl_new_node(fd);
 	prev->next = node;
 	return (node);
+}
+
+static	char	*gnl_reformat_line(t_node *node, int status)
+{
+	char	*temp;
+	char	*line;
+	char	*target;
+
+	target = ft_strchr(node->storage, '\n');
+	if (target == NULL)
+	{
+		if (status != FINISH)
+			return (NULL);
+		line = node->storage;
+		node->storage = NULL;
+		return (line);
+	}
+	temp = node->storage;
+	line = ft_strndup(temp, target - temp + 1);
+	if (line == NULL)
+		return (NULL);
+	node->storage = ft_strndup(target + 1, ft_strlen(target + 1));
+	free(temp);
+	if (node->storage == NULL)
+		return (NULL);
+	return (line);
 }
