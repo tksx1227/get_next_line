@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 00:54:28 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 10:12:35 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # include <stdint.h>
 
 # define SUCCESS 1
-# define FINISH 0
-# define ERROR -1
+# define FAIL 0
 
 typedef struct s_list
 {

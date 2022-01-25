@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 09:51:35 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 10:13:21 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	gnl_read(int fd, char **line)
 			if (rc == 0)
 				return (SUCCESS);
 			else
-				return (ERROR);
+				return (FAIL);
 		}
 		buf[rc] = '\0';
 		*line = ft_strjoin(*line, buf);
