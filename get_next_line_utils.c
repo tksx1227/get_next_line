@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 22:17:08 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 23:48:33 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,29 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
+	size_t	len[2];
 	char	*p;
+	char	*temp;
 	char	*head;
 
 	if (s1 == NULL)
 		return (ft_strndup(s2, ft_strlen(s2)));
-	if (SIZE_MAX - ft_strlen(s1) <= ft_strlen(s2))
+	len[0] = ft_strlen(s1);
+	len[1] = ft_strlen(s2);
+	if (SIZE_MAX - len[0] <= len[1])
 	{
 		free(s1);
 		return (NULL);
 	}
-	p = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (p == NULL)
-	{
-		free(s1);
-		return (NULL);
-	}
+	p = (char *)malloc(sizeof(char) * (len[0] + len[1] + 1));
 	head = p;
-	while (*s1 != '\0')
+	temp = s1;
+	while (p != NULL && *s1 != '\0')
 		*p++ = *s1++;
-	while (*s2 != '\0')
+	while (p != NULL && *s2 != '\0')
 		*p++ = *s2++;
-	*p = '\0';
-	free(s1);
+	if (p != NULL)
+		*p = '\0';
+	free(temp);
 	return (head);
 }
