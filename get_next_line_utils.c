@@ -89,3 +89,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(temp);
 	return (head);
 }
+
+void	gnl_free_all(t_node *node)
+{
+	t_node	*prev;
+
+	while (node != NULL)
+	{
+		prev = node;
+		node = node->next;
+		free(prev->storage);
+		free(prev->next);
+		free(prev);
+	}
+}
