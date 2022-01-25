@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 23:48:33 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/25 23:58:52 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (head);
 }
 
-void	gnl_free_all(t_node *node)
+void	gnl_free_all(t_node **root)
 {
+	t_node	*node;
 	t_node	*prev;
 
+	if (root == NULL || *root == NULL)
+		return ;
+	node = *root;
 	while (node != NULL)
 	{
 		prev = node;
@@ -102,4 +106,5 @@ void	gnl_free_all(t_node *node)
 		free(prev->next);
 		free(prev);
 	}
+	*root = NULL;
 }
