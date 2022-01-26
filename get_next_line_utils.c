@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 19:56:23 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 23:06:19 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	gnl_free(t_node **root, t_node *target)
 	{
 		*root = next;
 		if (next != NULL)
-			next->prev = *root;
+			next->prev = NULL;
 	}
 	free(target->storage);
 	free(target);
