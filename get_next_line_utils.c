@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:48:18 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 11:38:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 19:56:23 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,25 +93,24 @@ char	*ft_strjoin(char *s1, char *s2)
 void	gnl_free(t_node **root, t_node *target)
 {
 	t_node	*prev;
+	t_node	*next;
 
-	if (root == NULL || *root == NULL)
+	if (root == NULL || *root == NULL || target == NULL)
 		return ;
-	if (target != NULL)
+	prev = target->prev;
+	next = target->next;
+	if (prev != NULL)
 	{
-		prev = target->prev;
-		if (prev != NULL)
-			prev->next = target->next;
-		else
-			*root = target->next;
-		free(target->storage);
-		free(target);
-		return ;
+		prev->next = next;
+		if (next != NULL)
+			next->prev = prev;
 	}
-	while (*root != NULL)
+	else
 	{
-		prev = *root;
-		*root = (*root)->next;
-		free(prev->storage);
-		free(prev);
+		*root = next;
+		if (next != NULL)
+			next->prev = *root;
 	}
+	free(target->storage);
+	free(target);
 }
