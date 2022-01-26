@@ -32,7 +32,7 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-void	gnl_free_all(t_node **node);
+void	gnl_free(t_node **root, t_node *target);
 char	*get_next_line(int fd);
 char	*ft_strndup(const char *s, size_t size);
 char	*ft_strchr(const char *s, int c);
