@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 14:46:34 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 19:31:29 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	gnl_read(t_node	*node)
 		{
 			free(buf);
 			if (rc == 0)
-				return (FINISH);
+				return (SUCCESS);
 			return (FAIL);
 		}
 		buf[rc] = '\0';
@@ -90,22 +90,21 @@ static	char	*gnl_reformat_line(t_node *node, int status)
 	if (status == FAIL || node == NULL)
 		return (NULL);
 	target = ft_strchr(node->storage, '\n');
-	if (target == NULL || status == FINISH)
+	if (target == NULL)
 	{
-		if (status != FINISH)
-			return (NULL);
 		line = node->storage;
-		node->storage = NULL;
+		node->storage = ft_strndup("", 0);
 		return (line);
 	}
 	temp = node->storage;
 	line = ft_strndup(temp, target - temp + 1);
-	if (line == NULL)
-		return (NULL);
 	node->storage = ft_strndup(target + 1, ft_strlen(target + 1));
 	free(temp);
 	if (node->storage == NULL)
+	{
+		free(line);
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -125,14 +124,16 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	node = gnl_get_node(fd, &root);
+	if (node == NULL)
+		return (NULL);
 	status = gnl_read(node);
-	line = gnl_reformat_line(node, status);
-	if (status == FAIL || line == NULL)
+	if (status == FAIL)
 	{
-		gnl_free(&root, NULL);
+		gnl_free(&root, node);
 		return (NULL);
 	}
-	if (status == FINISH)
+	line = gnl_reformat_line(node, status);
+	if (line == NULL || *(node->storage) == '\0')
 		gnl_free(&root, node);
 	return (line);
 }
