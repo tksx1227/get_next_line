@@ -53,3 +53,7 @@ dkms.conf
 
 # Test files
 files/
+
+# Main files
+main.c
+main_bonus.c
