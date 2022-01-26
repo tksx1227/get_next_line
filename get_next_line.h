@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/25 23:53:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 11:38:06 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_node
 {
 	int				fd;
 	char			*storage;
+	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
 
