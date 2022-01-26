@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:02:24 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 23:10:11 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ static int	gnl_read(t_node	*node)
 		if (node->storage == NULL)
 			return (FAIL);
 	}
-}
-
-static t_node	*gnl_new_node(int fd)
-{
-	t_node	*node;
-
-	node = (t_node *)malloc(sizeof(t_node));
-	if (node == NULL)
-		return (NULL);
-	node->fd = fd;
-	node->storage = NULL;
-	node->prev = NULL;
-	node->next = NULL;
-	return (node);
 }
 
 static t_node	*gnl_get_node(int fd, t_node **root)
@@ -106,6 +92,31 @@ static	char	*gnl_reformat_line(t_node *node, int status)
 		return (NULL);
 	}
 	return (line);
+}
+
+static void	gnl_free(t_node **root, t_node *target)
+{
+	t_node	*prev;
+	t_node	*next;
+
+	if (root == NULL || *root == NULL || target == NULL)
+		return ;
+	prev = target->prev;
+	next = target->next;
+	if (prev != NULL)
+	{
+		prev->next = next;
+		if (next != NULL)
+			next->prev = prev;
+	}
+	else
+	{
+		*root = next;
+		if (next != NULL)
+			next->prev = NULL;
+	}
+	free(target->storage);
+	free(target);
 }
 
 char	*get_next_line(int fd)

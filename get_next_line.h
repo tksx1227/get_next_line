@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 00:27:08 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:04:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 23:10:50 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-void	gnl_free(t_node **root, t_node *target);
 char	*get_next_line(int fd);
 char	*ft_strndup(const char *s, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
+t_node	*gnl_new_node(int fd);
 
 #endif
