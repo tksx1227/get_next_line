@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 12:08:09 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 14:46:34 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ static	char	*gnl_reformat_line(t_node *node, int status)
 	char	*line;
 	char	*target;
 
+	if (status == FAIL || node == NULL)
+		return (NULL);
 	target = ft_strchr(node->storage, '\n');
-	if (target == NULL)
+	if (target == NULL || status == FINISH)
 	{
 		if (status != FINISH)
 			return (NULL);
