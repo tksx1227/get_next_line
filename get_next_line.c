@@ -126,13 +126,13 @@ char	*get_next_line(int fd)
 	}
 	node = gnl_get_node(fd, &root);
 	status = gnl_read(node);
-	if (status == FAIL)
+	line = gnl_reformat_line(node, status);
+	if (status == FAIL || line == NULL)
 	{
 		gnl_free(&root, NULL);
 		return (NULL);
 	}
-	line = gnl_reformat_line(node, status);
-	if (line == NULL)
-		gnl_free(&root, NULL);
+	if (status == FINISH)
+		gnl_free(&root, node);
 	return (line);
 }
