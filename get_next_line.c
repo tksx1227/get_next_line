@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 00:19:56 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:16:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/26 23:19:21 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	node = gnl_get_node(fd, &root);
-	if (node == NULL)
-		return (NULL);
 	status = gnl_read(node);
 	if (status == FAIL)
 	{
