@@ -31,9 +31,9 @@ typedef struct s_node
 }	t_node;
 
 char	*get_next_line(int fd);
-char	*ft_strndup(const char *s, size_t size);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strndup(const char *s, size_t size);
+char	*ft_strjoin_with_free(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 t_node	*gnl_new_node(int fd);
 

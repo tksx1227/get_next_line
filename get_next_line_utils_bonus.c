@@ -61,7 +61,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_with_free(char *s1, char *s2)
 {
 	size_t	len[2];
 	char	*p;
