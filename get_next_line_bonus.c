@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	t_node			*node;
 	static t_node	*root;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || SIZE_MAX < BUFFER_SIZE)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (root == NULL)
 	{
