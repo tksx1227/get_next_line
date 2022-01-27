@@ -66,7 +66,7 @@ static int	gnl_read(t_node	*node)
 			return (FAIL);
 		}
 		buf[rc] = '\0';
-		node->storage = ft_strjoin(node->storage, buf);
+		node->storage = ft_strjoin_with_free(node->storage, buf);
 		free(buf);
 		if (node->storage == NULL)
 			return (FAIL);
