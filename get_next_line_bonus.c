@@ -6,16 +6,16 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 23:19:21 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:21:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/28 09:59:03 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
 static int		gnl_read(t_node	*node);
+static char		*gnl_reformat_line(t_node *node);
 static t_node	*gnl_get_node(int fd, t_node **root);
 static void		gnl_free(t_node **root, t_node *target);
-static char		*gnl_reformat_line(t_node *node, int status);
 
 char	*get_next_line(int fd)
 {
@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 		gnl_free(&root, node);
 		return (NULL);
 	}
-	line = gnl_reformat_line(node, status);
+	line = gnl_reformat_line(node);
 	if (line == NULL || *(node->storage) == '\0')
 		gnl_free(&root, node);
 	return (line);
@@ -100,13 +100,13 @@ static t_node	*gnl_get_node(int fd, t_node **root)
 	return (node);
 }
 
-static char	*gnl_reformat_line(t_node *node, int status)
+static char	*gnl_reformat_line(t_node *node)
 {
 	char	*temp;
 	char	*line;
 	char	*target;
 
-	if (status == FAIL || node == NULL)
+	if (node == NULL)
 		return (NULL);
 	target = ft_strchr(node->storage, '\n');
 	if (target == NULL)
