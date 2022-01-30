@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 23:22:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:24:02 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/30 15:47:18 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <errno.h>
 
 # define SUCCESS 1
 # define FAIL 0

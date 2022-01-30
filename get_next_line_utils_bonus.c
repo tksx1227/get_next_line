@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 23:23:01 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/26 23:23:24 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/30 15:47:45 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	*ft_strndup(const char *s, size_t size)
 		size = len;
 	p = (char *)malloc(sizeof(char) * (size + 1));
 	if (p == NULL)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	i = 0;
 	while (i < size)
 	{
