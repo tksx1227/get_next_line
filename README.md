@@ -1,7 +1,7 @@
 # get_next_line
 The aim of this project is to make you code a function that returns a line, read from a file descriptor.
 
-※ In this repository, Mandatory part and Bonus Part have the same implementation.
+※ In this repository, Mandatory part and Bonus part have the same implementation.
 
 ## Usage
 
